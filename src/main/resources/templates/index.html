@@ -66,8 +66,8 @@
                     <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
                     <br><br><br><br>
 
-                    <form class="input-group mb-3" action="/halls">
-                        <input type="text" class="form-control" placeholder="your city?" aria-label="your city?"
+                    <form class="input-group mb-3" action="/halls" method = "get">
+                        <input type="text" name="city" id="city" class="form-control" placeholder="your city?" aria-label="your city?"
                             aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-dark" type="submit">Search</button>
@@ -95,8 +95,8 @@
                                             <li class="list-group-item">price: Rs. <span th:text="${hall.price}"></span></li>
                                         </ul>
                                         <br>
-                                        <a href="#" class="card-btn mr-2"><i class="fas fa-link"></i> Buy Now</a>
-                                        <a href="#" class="card-btn"><i class="fab fa-github"></i> + tag</a>
+                                        <button type="button" class="card-btn btn btn-light">book now</button>
+                                        <button type="button" class="card-btn btn btn-outline-light">+ tag</button>
                                     </div>
                                 </div>
                             </div>

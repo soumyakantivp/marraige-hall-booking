@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.booking.marraigehall.model.Hall;
 import com.booking.marraigehall.service.HallService;
@@ -18,7 +19,7 @@ public class HallController {
 	@Autowired
 	HallService service;
 	
-	@RequestMapping(value = "/halls",method =RequestMethod.GET)
+	@RequestMapping(value = "/halls/all",method =RequestMethod.GET)
 	public String getHalls(ModelMap model){
 		List<Hall> list = new ArrayList<Hall>();
 		list = service.getHalls();
@@ -27,8 +28,8 @@ public class HallController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/halls/{city}",method =RequestMethod.GET)
-	public String getHalls(ModelMap model, @PathVariable String city){
+	@RequestMapping(value = "/halls",method =RequestMethod.GET)
+	public String getHalls(ModelMap model,  @RequestParam("city")String city){
 		List<Hall> list = new ArrayList<Hall>();
 		list = service.getHallsByCity(city);
 		model.addAttribute("halls", list);
