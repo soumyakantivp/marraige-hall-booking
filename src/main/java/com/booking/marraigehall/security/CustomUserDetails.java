@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.booking.marraigehall.model.User;
+import com.booking.marraigehall.model.Users;
 
 
 public class CustomUserDetails implements UserDetails {
@@ -23,7 +23,7 @@ public class CustomUserDetails implements UserDetails {
 	
 	
 	
-	CustomUserDetails(User user){
+	CustomUserDetails(Users user){
 		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.active = user.isActive();

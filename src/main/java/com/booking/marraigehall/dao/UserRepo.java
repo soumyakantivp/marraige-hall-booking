@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.booking.marraigehall.model.User;
+import com.booking.marraigehall.model.Users;
 
-public interface UserRepo  extends JpaRepository<User, Integer>{
-	Optional<User> findByusername(String username);
+public interface UserRepo  extends JpaRepository<Users, Integer>{
+	Optional<Users> findByusername(String username);
 }

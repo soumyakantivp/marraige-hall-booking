@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.booking.marraigehall.dao.UserRepo;
-import com.booking.marraigehall.model.User;
+import com.booking.marraigehall.model.Users;
 
 @Service
 public class UserService {
@@ -14,7 +14,7 @@ public class UserService {
 	@Autowired
 	UserRepo repo;
 
-	public boolean addUser(User newUser) {
+	public boolean addUser(Users newUser) {
 		// TODO Auto-generated method stub
 		if(repo.findByusername(newUser.getUsername()).equals(Optional.empty())) {
 			repo.save(newUser);

@@ -11,9 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "USER")
-public class User {
+@Entity(name="users")
+public class Users {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,11 +28,11 @@ public class User {
 
 	
 	
-	public User() {
+	public Users() {
 		super();
 	}
 
-	public User(String username, String password, boolean active, String roles) {
+	public Users(String username, String password, boolean active, String roles) {
 		super();
 		this.username = username;
 		this.password = password;

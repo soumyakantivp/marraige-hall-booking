@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.booking.marraigehall.model.User;
+import com.booking.marraigehall.model.Users;
 import com.booking.marraigehall.service.UserService;
 
 @Controller
@@ -25,7 +25,7 @@ public class UserController {
 	public String register(ModelMap model, @RequestParam("email")String email, @RequestParam("password")String password, @RequestParam("confirm")String confirm){
 		//System.out.println(name+" "+password+" "+confirm);
 		if(password.equals(confirm)) {
-			User newUser = new User(email, password, true, "ROLE_USER");
+			Users newUser = new Users(email, password, true, "ROLE_USER");
 			if(service.addUser(newUser)) {
 				model.addAttribute("name", email);
 				return "reg-success";

@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.booking.marraigehall.dao.UserRepo;
-import com.booking.marraigehall.model.User;
+import com.booking.marraigehall.model.Users;
 
 
 @Service
@@ -24,7 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
 		
-		Optional<User> user = userRepository.findByusername(username);
+		Optional<Users> user = userRepository.findByusername(username);
 		
 		user.orElseThrow(()->
 			new UsernameNotFoundException("User not Found :: "+username)
