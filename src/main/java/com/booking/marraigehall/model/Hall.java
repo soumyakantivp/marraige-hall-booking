@@ -18,6 +18,19 @@ public class Hall {
 	private double discount;
 	
 	
+	
+	public Hall() {
+		super();
+	}
+	public Hall(String name, String city, double area, String image, double price, double discount) {
+		super();
+		this.name = name;
+		this.city = city;
+		this.area = area;
+		this.image = image;
+		this.price = price;
+		this.discount = discount;
+	}
 	public int getId() {
 		return id;
 	}

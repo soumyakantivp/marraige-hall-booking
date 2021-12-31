@@ -24,4 +24,7 @@ public class HallService {
 		return repo.findByCity(city);
 	}
 
+	public void addHall(Hall newHall) {
+		repo.save(newHall);
+	}
 }
