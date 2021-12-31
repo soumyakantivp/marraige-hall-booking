@@ -1,6 +1,7 @@
 package com.booking.marraigehall.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,10 @@ public class HallService {
 
 	public void addHall(Hall newHall) {
 		repo.save(newHall);
+	}
+
+	public Optional<Hall> getHallById(int id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id);
 	}
 }
