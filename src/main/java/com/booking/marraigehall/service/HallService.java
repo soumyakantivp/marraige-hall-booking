@@ -33,4 +33,29 @@ public class HallService {
 		// TODO Auto-generated method stub
 		return repo.findById(id);
 	}
+
+	public void updateHall(int id, Hall newHall) {
+		// TODO Auto-generated method stub
+		Optional<Hall> ohall = repo.findById(id);
+		
+		if(ohall.isPresent()) {
+			Hall hall = ohall.get();
+			hall.setName(newHall.getName());
+			hall.setArea(newHall.getArea());
+			hall.setCity(newHall.getCity());
+			hall.setImage(newHall.getImage());
+			hall.setPrice(newHall.getPrice());
+			hall.setDiscount(newHall.getDiscount());
+			repo.save(hall);
+		}
+		else {
+			System.out.println("update failed!");
+		}
+		
+	}
+
+	public void deleteById(int hall_id) {
+		// TODO Auto-generated method stub
+		repo.deleteById(hall_id);
+	}
 }

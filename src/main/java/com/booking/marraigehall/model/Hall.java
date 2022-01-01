@@ -1,5 +1,6 @@
 package com.booking.marraigehall.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,16 +14,19 @@ public class Hall {
 	private String name;
 	private String city;
 	private double area;
+	@Column(length = 1337)
 	private String image;
 	private double price;
 	private double discount;
-	
+	@Column(nullable=true)
+	private int owner;
 	
 	
 	public Hall() {
 		super();
 	}
-	public Hall(String name, String city, double area, String image, double price, double discount) {
+	
+	public Hall(String name, String city, double area, String image, double price, double discount, int owner) {
 		super();
 		this.name = name;
 		this.city = city;
@@ -30,7 +34,9 @@ public class Hall {
 		this.image = image;
 		this.price = price;
 		this.discount = discount;
+		this.owner = owner;
 	}
+
 	public int getId() {
 		return id;
 	}
@@ -74,12 +80,22 @@ public class Hall {
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
+	
+	public int getOwner_id() {
+		return owner;
+	}
+
+	public void setOwner_id(int owner_id) {
+		this.owner = owner_id;
+	}
+
 	@Override
 	public String toString() {
 		return "Hall [id=" + id + ", name=" + name + ", city=" + city + ", area=" + area + ", image=" + image
-				+ ", price=" + price + ", discount=" + discount + "]";
+				+ ", price=" + price + ", discount=" + discount + ", owner_id=" + owner + "]";
 	}
-	
+
+
 	
 	
 	

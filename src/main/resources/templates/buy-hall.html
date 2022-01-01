@@ -70,10 +70,12 @@
 
                         </div>
                     </div>
-                    <form action="/book/pay" method="post">
+                    <form action="/" method="get">
                         <div class="form-group">
-                            <label for="from">Total Amount:</label>
-                            
+                            <label>Total Amount: <span th:text="${booking.amount}"></span></label><br>
+                            <label>From: <span th:text="${booking.fd}"></span></label>	&nbsp;	&nbsp;	&nbsp;
+                            <label>To: <span th:text="${booking.td}"></span></label> <br>
+                            <label>No of Days: <span th:text="${booking.days}"></span></label>
                         </div>
                         <br>
                         

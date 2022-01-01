@@ -18,7 +18,7 @@ public class CustomUserDetails implements UserDetails {
 	private String username;
 	private String password;
 	private boolean active;
-
+	private int id;
 	private List<GrantedAuthority> authotities;
 	
 	
@@ -27,7 +27,7 @@ public class CustomUserDetails implements UserDetails {
 		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.active = user.isActive();
-		
+		this.id = user.getId();
 		this.authotities = Stream.of(user.getRoles().split(",")).map(x->{
 			return new SimpleGrantedAuthority(x);
 		}).collect(Collectors.toList());
@@ -36,6 +36,13 @@ public class CustomUserDetails implements UserDetails {
 	}
 
 	
+
+	public int getId() {
+		return id;
+	}
+
+
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

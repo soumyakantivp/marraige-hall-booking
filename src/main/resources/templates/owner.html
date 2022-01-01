@@ -31,10 +31,12 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#about">Book Now</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">add hall</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">my halls</a></li>
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
+                   
                 </ul>
             </div>
         </div>
@@ -107,9 +109,9 @@
                         <button type="submit" class="btn btn-dark">Create New Hall</button>
                     </form>
 
-                
 
-                   
+
+
                 </div>
             </div>
         </div>
@@ -117,36 +119,32 @@
     <!-- Services-->
     <section class="page-section" id="services">
         <div class="container px-4 px-lg-5">
-            <h2 class="text-center mt-0">At Your Service</h2>
+            <h2 class="text-center mt-0">My halls</h2>
             <hr class="divider" />
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Sturdy Themes</h3>
-                        <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+            <div class="container mx-auto mt-4">
+                <div class="row">
+
+                    <div class="col-md-6" th:each="hall : ${halls}">
+                        <div class="card" style="width: 18rem;">
+                            <img th:src="${hall.image}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><span th:text="${hall.name}"></span></h5>
+
+                                <ul class="list-group">
+                                    <li class="list-group-item">city: <span th:text="${hall.city}"></span></li>
+                                    <li class="list-group-item">area: <span th:text="${hall.area}"></span> sq ft.</li>
+                                    <li class="list-group-item">price: Rs. <span th:text="${hall.price}"></span></li>
+                                </ul>
+                                <br>
+                                <a th:href="@{'/owner/update/' + ${hall.id}}" class="card-btn btn btn-light">update</a>
+                                <a th:href="@{'/owner/delete/' + ${hall.id}}" class="card-btn btn btn-outline-light">delete</a>
+                                
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Up to Date</h3>
-                        <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Ready to Publish</h3>
-                        <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="mt-5">
-                        <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                        <h3 class="h4 mb-2">Made with Love</h3>
-                        <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-                    </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -212,13 +210,7 @@
             </div>
         </div>
     </div>
-    <!-- Call to action-->
-    <section class="page-section bg-dark text-white">
-        <div class="container px-4 px-lg-5 text-center">
-            <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-            <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">Download Now!</a>
-        </div>
-    </section>
+   
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container px-4 px-lg-5">
