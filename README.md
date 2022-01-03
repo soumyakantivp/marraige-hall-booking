@@ -1,4 +1,4 @@
-# marraige-hall-booking
+# marriage-hall-booking
 
 This prototype application is hosted in heroku at the url -->
 https://springboot-webapp-marraigehall.herokuapp.com/
