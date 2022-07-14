@@ -1,14 +1,14 @@
-package com.booking.marraigehall.service;
+package com.booking.blood.bank.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.booking.marraigehall.dao.BookingsRepo;
-import com.booking.marraigehall.dao.UserRepo;
-import com.booking.marraigehall.model.Bookings;
-import com.booking.marraigehall.model.Users;
+import com.booking.blood.bank.dao.BookingsRepo;
+import com.booking.blood.bank.dao.UserRepo;
+import com.booking.blood.bank.model.Bookings;
+import com.booking.blood.bank.model.Users;
 
 @Service
 public class UserService {

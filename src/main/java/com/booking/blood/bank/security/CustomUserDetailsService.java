@@ -1,4 +1,4 @@
-package com.booking.marraigehall.security;
+package com.booking.blood.bank.security;
 
 
 import java.util.Optional;
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.booking.marraigehall.dao.UserRepo;
-import com.booking.marraigehall.model.Users;
+import com.booking.blood.bank.dao.UserRepo;
+import com.booking.blood.bank.model.Users;
 
 
 @Service

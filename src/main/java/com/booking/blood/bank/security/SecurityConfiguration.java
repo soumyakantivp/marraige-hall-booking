@@ -1,4 +1,4 @@
-package com.booking.marraigehall.security;
+package com.booking.blood.bank.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +23,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// TODO Auto-generated method stub
+	
 		auth.userDetailsService(userDetailsService);
 	}
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/login", "/h2-console/**").permitAll()
-                .antMatchers("/halls","/halls/**").access("hasRole('USER')")
-                .antMatchers("owner-dashboard","/owner-dashboard/**").access("hasRole('OWNER')")
+        /*http.authorizeRequests().antMatchers("/", "/login", "/h2-console/**").permitAll()
+                .antMatchers("/admin","/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/user","/user/**").access("hasRole('USER')")
                 .and()
-                .formLogin();
-        
+                .formLogin();*/
+		http.authorizeRequests().antMatchers("/*", "/login", "/h2-console/**").permitAll()
+        .and()
+        .formLogin();
+		
         http.csrf().disable();
         http.headers().frameOptions().disable();
     }

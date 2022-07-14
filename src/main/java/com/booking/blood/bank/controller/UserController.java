@@ -1,27 +1,17 @@
-package com.booking.marraigehall.controller;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Optional;
+package com.booking.blood.bank.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.booking.marraigehall.model.Bookings;
-import com.booking.marraigehall.model.Hall;
-import com.booking.marraigehall.model.Users;
-import com.booking.marraigehall.security.CustomUserDetails;
-import com.booking.marraigehall.service.HallService;
-import com.booking.marraigehall.service.UserService;
+import com.booking.blood.bank.model.Users;
+import com.booking.blood.bank.service.BloodBankService;
+import com.booking.blood.bank.service.UserService;
 
-@Controller
+@RestController
 public class UserController {
 
 	
@@ -29,38 +19,31 @@ public class UserController {
 	UserService service;
 	
 	@Autowired
-	HallService hall_service;
+	BloodBankService hall_service;
+
 	
-	
-	@RequestMapping(value = "/register",method =RequestMethod.GET)
-	public String getRegistrationForm(){
-		return "register";
-	}
-	
-	@RequestMapping(value = "/register",method =RequestMethod.POST)
-	public String register(ModelMap model, @RequestParam("email")String email, @RequestParam("password")String password, @RequestParam("confirm")String confirm, @RequestParam("role")String role){
-		System.out.println(email+" "+password+" "+confirm+" "+role);
+	@RequestMapping(value = "/user/register",method =RequestMethod.POST)
+	public boolean register(ModelMap model, @RequestParam("email")String email, @RequestParam("password")String password, @RequestParam("confirm")String confirm){
+		System.out.println(email+" "+password+" "+confirm+" "+"USER");
 		if(password.equals(confirm)) {
-			Users newUser = new Users(email, password, true, role);
+			Users newUser = new Users(email, password, true, "USER");
 			if(service.addUser(newUser)) {
 				model.addAttribute("name", email);
-				return "reg-success";
+				return true;
 			}
 			else {
 				model.addAttribute("err","user already registered!");
-				return "reg-failure";
+				return false;
 			}
 		}
 		model.addAttribute("err","password and confirmation are not same!");
-		return "reg-failure";
+		return false;
 	}
-	
-	
-	
+	/*
 	@RequestMapping(value = "/book/{id}",method=RequestMethod.GET)
 	public String bookHall(ModelMap model, @PathVariable int id){
 		//System.out.println(id);
-		Optional<Hall> hall = hall_service.getHallById(id);
+		Optional<BloodBank> hall = hall_service.getHallById(id);
 		if(hall.isPresent()) {
 			model.addAttribute("hall",hall.get());
 			System.out.println(hall);
@@ -71,7 +54,7 @@ public class UserController {
 	@RequestMapping(value = "/book/pay",method=RequestMethod.GET)
 	public String bookHallDate(ModelMap model, @RequestParam("from")String from, @RequestParam("to")String to, @RequestParam("id")int id){
 		System.out.println(from+" | "+to+" | "+id);
-		Optional<Hall> hall = hall_service.getHallById(id);
+		Optional<BloodBank> hall = hall_service.getHallById(id);
 		if(hall.isPresent()) {
 			model.addAttribute("hall",hall.get());
 			System.out.println(hall);
@@ -109,5 +92,6 @@ public class UserController {
 		System.out.println("loggedin userid: "+principal.toString());
 		return -1;
 	}
+	*/
 	
 }

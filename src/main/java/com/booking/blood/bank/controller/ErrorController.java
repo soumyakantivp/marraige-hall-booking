@@ -1,4 +1,4 @@
-package com.booking.marraigehall.controller;
+package com.booking.blood.bank.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

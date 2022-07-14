@@ -1,4 +1,4 @@
-package com.booking.marraigehall.model;
+package com.booking.blood.bank.model;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name="users")
+@Entity(name="Users")
 public class Users {
 
 	@Id
@@ -21,6 +21,9 @@ public class Users {
 	private String username;
 	
 	private String password;
+	
+	@OneToMany(mappedBy="user")
+	private List<Bookings> bookings;
 	
 	private boolean active;
 	
@@ -38,6 +41,14 @@ public class Users {
 		this.password = password;
 		this.active = active;
 		this.roles = roles;
+	}
+	
+	public List<Bookings> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<Bookings> bookings) {
+		this.bookings = bookings;
 	}
 
 	public int getId() {
@@ -85,13 +96,4 @@ public class Users {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", active=" + active
 				+ ", roles=" + roles + "]";
 	}
-	
-	
-	
-
-	
-	
-	
-	
-	
 }

@@ -1,4 +1,4 @@
-package com.booking.marraigehall.security;
+package com.booking.blood.bank.security;
 
 
 import java.util.Collection;
@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.booking.marraigehall.model.Users;
+import com.booking.blood.bank.model.Users;
 
 
 public class CustomUserDetails implements UserDetails {
